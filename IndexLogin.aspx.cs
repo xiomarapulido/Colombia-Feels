@@ -23,7 +23,7 @@ public partial class IndexLogin : System.Web.UI.Page
     {
         try
         {
-            rtDataTable DtUsuarios = new DataTable();
+            DataTable DtUsuarios = new DataTable();
 
             ProyectADO ProyectADO = new ProyectADO();
 

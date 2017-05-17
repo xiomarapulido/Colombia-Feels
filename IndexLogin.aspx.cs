@@ -35,7 +35,7 @@ public partial class IndexLogin : System.Web.UI.Page
 
             if (DtUsuarios.Rows.Count > 0)
             {
-                Response.Redirect("Menu.aspx");
+                Response.Redirect("index-logged_in.aspx");
             }
 
             

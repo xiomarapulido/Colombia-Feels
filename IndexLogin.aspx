@@ -18,7 +18,9 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-           
+            <div class="col-md-12 text-center">
+                <img src="img/logo-temp.png" title="Colombia Feels" alt="Colombia Feels" style="margin-top: -15px; height:50px;" class="img-rounded"/>        
+            </div>
             <div class="col-md-12">
                 <p>
                     <asp:Label Text="" ID="lblLoginError" runat="server" />
@@ -28,7 +30,7 @@
                     <div class="form">
 
                         <input id="TxtUsuario" type="text" placeholder="Correo" name="un" runat="server" />
-                        <input type="password" name="pw" id="TxtContrasena" placeholder="Contraseña" runat="server" />
+                        <input type="password" name="pw" id="TxtContrasena" placeholder="ContraseÃ±a" runat="server" />
                         <asp:Button Text="Iniciar Sesion" ID="BtnIniciar" runat="server" class="login-button" OnClick="BtnIniciar_Click"
                             />
                     </div>
@@ -42,7 +44,7 @@
             </div>
             <div class="col-md-12">
                 <footer>
-                    <h6 style="margin-top: 9%; text-align: center; color: #00698c">Copyright © 2017 | Xiomara Andrea Pulido| Abel Felipe Chaux Gutierrez | John Alvaro Ramírez Murcia
+                    <h6 style="margin-top: 9%; text-align: center; color: #00698c">Copyright Â© 2017 | Xiomara Andrea Pulido| Abel Felipe Chaux Gutierrez | John Alvaro RamÃ­rez Murcia
                     </h6>
                 </footer>
             </div>

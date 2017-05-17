@@ -4,8 +4,8 @@
 
 html, body {
     height: 100%;
-    background: -webkit-linear-gradient(#00698c,#ffffff) no-repeat;
-    background: -moz-linear-gradient(#00698c,#ffffff) no-repeat;
+    background: -webkit-linear-gradient(#ffffff,#ffffff) no-repeat;
+    background: -moz-linear-gradient(#ffffff,#ffffff) no-repeat;
 }
 
     html .login-wrap {

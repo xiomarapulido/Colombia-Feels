@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IndexLogin.aspx.cs" Inherits="IndexLogin" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IndexLogin.aspx.cs" Inherits="IndexLogin" %>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,9 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-           
+            <div class="col-md-12 text-center">
+                <img src="img/logo-temp.png" title="Colombia Feels" alt="Colombia Feels" style="margin-top: -15px; height:50px;" class="img-rounded"/>        
+            </div>
             <div class="col-md-12">
                 <p>
                     <asp:Label Text="" ID="lblLoginError" runat="server" />
@@ -33,6 +35,12 @@
                             />
                     </div>
                 </div>
+                <div class="col-md-12">
+                
+                    <h6 style="text-align: center; color: #00698c"><a href="FormRegister.aspx">Registrarse</a>
+                    </h6>
+          
+            </div>
             </div>
             <div class="col-md-12">
                 <footer>

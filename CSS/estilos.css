@@ -382,3 +382,20 @@ body.loading {
 body.loading .cargando {
     display: block;
 }
+
+
+/*Slider para las insignias no modificar la clase directamente si no el objeto sliderInsignias con las clases carousel*/
+#sliderInsignias {
+    width: 100%;
+    height: 350px; 
+}
+#sliderInsignias img {
+    width: 30%;
+    margin-left:22px;
+}
+
+#sliderInsignias .carousel-caption {
+    position: static;
+    color: black;
+    text-align: center;
+}

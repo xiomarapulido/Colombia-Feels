@@ -9,7 +9,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-      <a class="navbar-brand" href="index-logged_in.php">
+      <a class="navbar-brand" href="index-logged_in.aspx">
           <img src="img/logo-temp.png" title="Colombia Feels" alt="Colombia Feels" style="margin-top: -15px; height:50px;" class="img-rounded"/>
       </a>
   </div>

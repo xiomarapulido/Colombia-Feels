@@ -13,6 +13,14 @@ public partial class index_logged_in : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        var nameSessi = Convert.ToString(Session["nombreUsuario"]);
+        var idSessi = Convert.ToInt32(Session["controlID"]);
+
+        Globals.s_Name = nameSessi;
+        Globals.s_Id = idSessi;
+
+        nombreUser.Controls.Add(new Literal { Text = nameSessi.ToString() });
+
         if (!this.IsPostBack)
         {
             cargarModulosInsginias();
@@ -23,11 +31,17 @@ public partial class index_logged_in : System.Web.UI.Page
 
     #region Methods
 
+    public static class Globals
+    {
+        public static String s_Name;
+        public static Int32 s_Id;
+    }
+
     protected void cargarModulosInsginias()
     {
         try
         {
-            var idPersona = 1;
+            var idPersona = Globals.s_Id;  //Idusuario del inicio de sesion
 
             DataTable dtModulos = new DataTable();  //Tabla para los modulos
             DataTable dtActividadPersonas = new DataTable(); //Consulta actividad por persona
@@ -37,7 +51,7 @@ public partial class index_logged_in : System.Web.UI.Page
 
             dtModulos = ProyectADO.Modulos(0, 1, "", "", 1);  //Lista de modulos
 
-            dtActividadPersonas = ProyectADO.ActividadPersonas(1,1);  //Consulta de actividad por persona
+            dtActividadPersonas = ProyectADO.ActividadPersonas(1, idPersona);  //Consulta de actividad por persona
             
 
             if (dtModulos.Rows.Count > 0)
@@ -48,7 +62,7 @@ public partial class index_logged_in : System.Web.UI.Page
 
                 foreach (DataRow row in dtModulos.Rows)
                 {
-                    var idModulo = Convert.ToInt32(row["Id_Modulo"]);
+                    var idModulo = Convert.ToInt32(row["Id_Modulo"]); //Id del modulo
                     var nombreModulo = row["Nombre"];
                     var descripModulo = row["Descripcion"];
 

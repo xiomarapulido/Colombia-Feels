@@ -8,6 +8,7 @@ using System.Data;
 
 public partial class IndexLogin : System.Web.UI.Page
 {
+
     #region Events
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -30,11 +31,16 @@ public partial class IndexLogin : System.Web.UI.Page
             DtUsuarios = ProyectADO.ConsultarPersonas("0", TxtUsuario.Value, TxtContrasena.Value);
 
 
-
-
-
             if (DtUsuarios.Rows.Count > 0)
             {
+                DataRow row = DtUsuarios.Rows[0];  //Obtener el primer registro
+                var controlID = Convert.ToInt32(row["Id_Persona"]);  //Almacenar el id de usuario
+                var nombreUsuario = row["Nombres"];
+
+                Page objp = new Page();  //Enviar variable de inicio de session
+                objp.Session["controlID"] = controlID;  //Variable de inicio de sesion para el id usuario
+                objp.Session["nombreUsuario"] = nombreUsuario; //Variable de inicio de sesion para el nombre usuario
+
                 Response.Redirect("index-logged_in.aspx");
             }
 
@@ -61,6 +67,5 @@ public partial class IndexLogin : System.Web.UI.Page
     }
 
     #endregion
-
 
 }

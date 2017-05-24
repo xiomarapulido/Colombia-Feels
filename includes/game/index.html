@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Juego</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../../Scripts/js/game/Level1.js"></script>
+        <script src="../../Scripts/js/game/MainMenu.js"></script>
+        <script src="../../Scripts/js/game/phaser.js"></script>
+
+        <script type="text/javascript">
+            window.onload=function(){
+
+
+             // declaracion de las variables del juego
+            var juego = new Phaser.Game(768, 500, Phaser.CANVAS, '',);
+            juego.state.add('MainMenu',Game.MainMenu);
+            juego.state.add('Level1',Game.Level1);    
+            juego.state.start('MainMenu');
+
+            };
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

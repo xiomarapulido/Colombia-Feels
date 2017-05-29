@@ -18,8 +18,8 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <div class="col-md-12 text-center">
-                <img src="img/logo-temp.png" title="Colombia Feels" alt="Colombia Feels" style="margin-top: -15px; height:50px;" class="img-rounded"/>        
+            <div class="col-md-12 text-center" style="margin-top:50px">
+                <img src="img/logo-temp.png" title="Colombia Feels" alt="Colombia Feels" style="height:150px;" class="img-rounded"/>        
             </div>
             <div class="col-md-12">
                 <p>
@@ -37,14 +37,14 @@
                 </div>
                 <div class="col-md-12">
                 
-                    <h6 style="text-align: center; color: #00698c"><a href="FormRegister.aspx">Registrarse</a>
-                    </h6>
+                    <h5 style="text-align: center; color: #00698c"><a href="FormRegister.aspx">Registrarse</a>
+                    </h5>
           
             </div>
             </div>
             <div class="col-md-12">
                 <footer>
-                    <h6 style="margin-top: 9%; text-align: center; color: #00698c">Copyright © 2017 | Xiomara Andrea Pulido| Abel Felipe Chaux Gutierrez | John Alvaro Ramírez Murcia
+                    <h6 style="margin-top:30px; text-align: center; color: #00698c">Copyright 2017 | Xiomara Andrea Pulido| Abel Felipe Chaux Gutierrez | John Alvaro RamÃ­rez Murcia
                     </h6>
                 </footer>
             </div>

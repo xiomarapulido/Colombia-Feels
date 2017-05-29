@@ -28,9 +28,7 @@ public partial class IndexLogin : System.Web.UI.Page
 
             ProyectADO ProyectADO = new ProyectADO();
 
-            DtUsuarios = ProyectADO.ConsultarPersonas("0", TxtUsuario.Value, TxtContrasena.Value);
-
-
+            DtUsuarios = ProyectADO.ConsultarPersonas("0", TxtUsuario.Value, TxtContrasena.Value.Trim(),"","", "","", "");
             if (DtUsuarios.Rows.Count > 0)
             {
                 DataRow row = DtUsuarios.Rows[0];  //Obtener el primer registro

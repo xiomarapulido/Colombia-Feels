@@ -160,7 +160,15 @@
  
                     <h4>Apellidos:</h4>
                     <asp:TextBox id="Txt_Apellidos" runat="server" onkeypress="return sololetras(event)" onpaste="return false"/>
- 
+                    
+                     <h4>Tipo de documento:</h4>
+                    <asp:DropDownList ID="DdlTiposDoc" runat="server">
+                        <asp:ListItem Value="-1">Seleccione</asp:ListItem>
+                        <asp:ListItem Value="1">Cédula de ciudadanía</asp:ListItem>
+                        <asp:ListItem Value="2">targeta de identidad</asp:ListItem>
+                        <asp:ListItem Value="3">Cédula de extranjería</asp:ListItem>
+                        <asp:ListItem Value="4">Pasaporte</asp:ListItem>
+                    </asp:DropDownList>
  
                     <h4>Documento de identidad:</h4>
                     <asp:TextBox id="Txt_Documento" runat="server" onkeypress="return Solonumeros(event)" onpaste="return false" />
@@ -180,7 +188,7 @@
                     
                     <asp:HiddenField ID="HiddEstado" runat="server" Value="1"></asp:HiddenField>
  
-                    <div id="enviar"><asp:Button id="BtnEnviar" Text="Enviar" runat="server" class="login-button"/> </div>
+                    <div id="enviar"><asp:Button id="BtnEnviar" Text="Enviar" runat="server" class="login-button" OnClick="BtnEnviar_Click"/> </div>
                     <asp:Label ID="LblMensaje" runat="server"></asp:Label>
                      
            </font>

@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 public class ProyectADO
 {
 
-    public string SqlConecction = "Data Source=AUX_INSTRUMENTA;Initial Catalog=ColombiaFeels;Integrated Security=True";
+    public string SqlConecction = "Data Source=DEVELOPER-PC;Initial Catalog=ColombiaFeels;Integrated Security=True";
 
     public ProyectADO()
     {
@@ -139,7 +139,6 @@ public class ProyectADO
         return respuesta;
     }
 
-
     public DataTable Insignias(int Op, int Id_Insignia, int Id_Progreso, int Id_ActividadPersona, int Id_TipoInsignia, int Id_persona, int Id_modulo)
     {
         SqlParameter _Op = new SqlParameter("@Op", SqlDbType.Int);
@@ -173,6 +172,67 @@ public class ProyectADO
 
         }
         return respuesta;
+    }
+
+    public DataTable Actividades(int Op, int Id_Actividad, String Nombre, String Descripcion, int Id_Modulo)
+    {
+       SqlParameter _Op = new SqlParameter("@Op", SqlDbType.Int);
+       _Op.Value = Op;
+
+       SqlParameter _Id_Actividad = new SqlParameter("@Id_Actividad", SqlDbType.Int);
+       _Id_Actividad.Value = Id_Actividad;
+
+       SqlParameter _Nombre = new SqlParameter("@Nombre", SqlDbType.VarChar);
+       _Nombre.Value = Nombre;
+
+       SqlParameter _Descripcion = new SqlParameter("@Descripcion", SqlDbType.VarChar);
+       _Descripcion.Value = Descripcion;
+
+       SqlParameter _Id_Modulo = new SqlParameter("@Id_Modulo", SqlDbType.Int);
+       _Id_Modulo.Value = Id_Modulo;
+
+       SqlParameter[] Parametros = { _Op, _Id_Actividad, _Nombre, _Descripcion, _Id_Modulo };
+
+       DataTable respuesta = null;
+
+       using (SqlConnection conn = new SqlConnection(SqlConecction))
+       {
+           respuesta = new BDConnection(SqlConecction).runStoredPrcDt(Parametros, conn, "JR_crud_actividades", 300000);
+       }
+       return respuesta;
+
+    }
+
+    public DataTable Progreso(int Op , int Id_Progreso, String Descripcion, int Id_Actividad, int Id_Persona, int porcentaje)
+    {
+        SqlParameter _Op = new SqlParameter("@Op", SqlDbType.Int);
+        _Op.Value = Op;
+
+        SqlParameter _Id_Progreso = new SqlParameter("@Id_Progreso", SqlDbType.Int);
+        _Id_Progreso.Value = Id_Progreso;
+
+        SqlParameter _Descripcion = new SqlParameter("@Descripcion", SqlDbType.VarChar);
+        _Descripcion.Value = Descripcion;
+
+        SqlParameter _Id_Actividad = new SqlParameter("@Id_Actividad", SqlDbType.Int);
+        _Id_Actividad.Value = Id_Actividad;
+
+        SqlParameter _Id_Persona = new SqlParameter("@Id_Persona", SqlDbType.Int);
+        _Id_Persona.Value = Id_Persona;
+
+        SqlParameter _porcentaje = new SqlParameter("@porcentaje", SqlDbType.Int);
+        _porcentaje.Value = porcentaje;
+
+        SqlParameter[] Parametros = { _Op, _Id_Progreso, _Descripcion, _Id_Actividad, _Id_Persona, _porcentaje };
+
+        DataTable respuesta = null;
+
+        using (SqlConnection conn = new SqlConnection(SqlConecction))
+        {
+            respuesta = new BDConnection(SqlConecction).runStoredPrcDt(Parametros, conn, "JR_Progreso", 300000);
+        }
+        return respuesta;
+
     }
 
     #endregion

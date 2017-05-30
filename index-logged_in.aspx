@@ -51,9 +51,23 @@
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <asp:PlaceHolder ID="nombreUser" runat="server" /> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-tasks fa-fw"></i> Mi progreso <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <asp:PlaceHolder ID="listaProgresoModulo" runat="server" />
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <asp:PlaceHolder ID="nombreUser" runat="server" />
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -63,13 +77,14 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-sign-out fa-fw"></i>Cerrar sesión
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
+             <!-- /.dropdown -->
 
 
             <!-- Configuracion de los permisos y vistas -->
@@ -77,18 +92,24 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-trophy fa-fw"></i>Mis insignias</a>
+                            <a href="#"><i class="fa fa-trophy fa-fw"></i> Mis insignias</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cubes fa-fw"></i>Caja de herramientas</a>
-                            
+                            <a href="#"><i class="fa fa-cubes fa-fw"></i> Caja de herramientas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <!--Listar modulos-->
+                                <asp:PlaceHolder ID="listaModulos" runat="server" /> 
+                            </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-line-chart fa-fw"></i>Mi progreso</a>
+                            <a href="#"><i class="fa fa-line-chart fa-fw"></i> Mi progreso</a>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i>Foros de discusión</a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Foros de discusión</a>
+                        </li>
+                        <li>
+                            <a href="game.aspx"><i class="fa fa-gamepad fa-fw"></i> Mini juego</a>
                         </li>
                     </ul>
                 </div>

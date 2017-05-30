@@ -22,8 +22,8 @@ public class ProyectADO
 
     // estas regiones las dejo para que separemos el código de cada uno
     #region XP
-
-    public DataTable ConsultarPersonas(string Op, string Usuario, string Contraseña)
+        
+        public DataTable ConsultarPersonas(string Op, string Usuario, string Contraseña, string Nombres, string Apellidos, string TipoDoc, string NumDoc, string Telefono)
     {
         SqlParameter _Op = new SqlParameter("@Op", SqlDbType.VarChar);
         _Op.Value = Op;
@@ -44,6 +44,40 @@ public class ProyectADO
 
         }
         return respuesta;
+    }
+
+    public int InsertarPersona(string Op, string Usuario, string Contraseña, string Nombres, string Apellidos, string TipoDoc, string NumDoc, string Telefono)
+    {
+        using (SqlConnection con = new SqlConnection(SqlConecction))
+        {
+            con.Open();
+            SqlCommand OrdenSql = new SqlCommand("XP_CRUD_Personas", con);
+            OrdenSql.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                OrdenSql.Parameters.AddWithValue("@Op", Op);
+                OrdenSql.Parameters.AddWithValue("@Usuario", Usuario);
+                OrdenSql.Parameters.AddWithValue("@contraseña", Contraseña);
+                OrdenSql.Parameters.AddWithValue("@Nombres", Nombres);
+                OrdenSql.Parameters.AddWithValue("@Apellidos", Apellidos);
+                OrdenSql.Parameters.AddWithValue("@Id_TipoDoc", TipoDoc);
+                OrdenSql.Parameters.AddWithValue("@NumDoc", NumDoc);
+                OrdenSql.Parameters.AddWithValue("@Telefono", Telefono);
+
+                return OrdenSql.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+                OrdenSql.Dispose();
+            }
+        }
     }
 
     #endregion

@@ -180,11 +180,10 @@
                     <asp:TextBox id="Txt_Correo" runat="server" />
  
                     <h4>Contraseña:</h4>
-                    <asp:TextBox id="TxtContraseña" runat="server" type="password" name="password"  />
+                    <asp:TextBox ID="TxtContrasena" runat="server" TextMode="Password"></asp:TextBox>
  
                     <h4>Confirmar contraseña:</h4>
-                    <asp:TextBox id="TxtContraseña2" runat="server" type="password" name="password"  />
- 
+                    <asp:TextBox ID="TxtContrasena2" runat="server" TextMode="Password"></asp:TextBox> 
                     
                     <asp:HiddenField ID="HiddEstado" runat="server" Value="1"></asp:HiddenField>
  

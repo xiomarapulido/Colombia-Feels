@@ -25,10 +25,10 @@ public partial class IndexLogin : System.Web.UI.Page
         try
         {
             DataTable DtUsuarios = new DataTable();
-
             ProyectADO ProyectADO = new ProyectADO();
 
             DtUsuarios = ProyectADO.ConsultarPersonas("0", TxtUsuario.Value, TxtContrasena.Value.Trim(),"","", "","", "");
+
             if (DtUsuarios.Rows.Count > 0)
             {
                 DataRow row = DtUsuarios.Rows[0];  //Obtener el primer registro
@@ -41,12 +41,11 @@ public partial class IndexLogin : System.Web.UI.Page
 
                 Response.Redirect("index-logged_in.aspx");
             }
-
-            
             else
             {
                 lblLoginError.Text = "correo o contraseña invalidos, intente nuevamente.";
             }
+
         }
         catch (Exception)
         {
@@ -54,6 +53,7 @@ public partial class IndexLogin : System.Web.UI.Page
         }
     }
     #endregion
+
     #region Methods
 
     

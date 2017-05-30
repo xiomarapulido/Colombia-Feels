@@ -34,8 +34,8 @@ public partial class FormRegister : System.Web.UI.Page
         DdlTiposDoc.SelectedValue = "-1";
         Txt_Correo.Text = "";
         Txt_Telefono.Text = "";
-        TxtContraseña.Text = "";
-        TxtContraseña2.Text = "";
+        TxtContrasena.Text = "";
+        TxtContrasena2.Text = "";
 
     }
     #endregion
@@ -48,22 +48,22 @@ public partial class FormRegister : System.Web.UI.Page
             ProyectADO ProyectADO = new ProyectADO();
 
             if (Txt_Nombres.Text == "" || Txt_Apellidos.Text == "" || Txt_Documento.Text == "" || DdlTiposDoc.SelectedValue == "-1" ||
-                Txt_Correo.Text == "" || Txt_Telefono.Text == "" || TxtContraseña.Text == "" || TxtContraseña2.Text == "")
+                Txt_Correo.Text == "" || Txt_Telefono.Text == "" || TxtContrasena.Text == "" || TxtContrasena2.Text == "")
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "mensaje", "alert('Para continuar con el registro debe diligenciar todos los campos')", true);
                 return;
 
             }
-            else if (TxtContraseña.Text.Trim() != TxtContraseña2.Text.Trim())
+            else if (TxtContrasena.Text.Trim() != TxtContrasena2.Text.Trim())
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "mensaje", "alert('La confirmacion de la contraseña no corresponde a la contraseña ingresada')", true);
                 return;
             }
             else
             {
-                ProyectADO.InsertarPersona("1", Txt_Correo.Text.Trim(), TxtContraseña.Text.Trim(), Txt_Nombres.Text.Trim(), Txt_Apellidos.Text.Trim(), DdlTiposDoc.SelectedValue, Txt_Documento.Text.Trim(), Txt_Documento.Text.Trim());
+                ProyectADO.InsertarPersona("1", Txt_Correo.Text.Trim(), TxtContrasena.Text.Trim(), Txt_Nombres.Text.Trim(), Txt_Apellidos.Text.Trim(), DdlTiposDoc.SelectedValue, Txt_Documento.Text.Trim(), Txt_Documento.Text.Trim());
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "mensaje", "alert('Registro terminado.')", true);
-                
+
                 LimpiarCammpos();
                 return;
             }

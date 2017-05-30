@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="lista_actividades.aspx.cs" Inherits="lista_actividades" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="modulos.aspx.cs" Inherits="modulos" %>
 
 <!DOCTYPE html>
 
@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Colombia Feels [Lista de actividades]</title>
+    <title>Colombia Feels [Modulos]</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Scripts/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -51,13 +51,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a onclick="#">
+                            <a onclick="">
                                 <i class="fa fa-user fa-fw"></i>Opciones del usuario
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="">
                                 <i class="fa fa-sign-out fa-fw"></i>Cerrar sesión
                             </a>
                         </li>
@@ -71,24 +71,21 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index-logged_in.aspx"><i class="fa fa-trophy fa-fw"></i> Mis insignias</a>
+                            <a href="index-logged_in.aspx"><i class="fa fa-trophy fa-fw"></i>Mis insignias</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cubes fa-fw"></i> Caja de herramientas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <!--Listar modulos-->
-                                <asp:PlaceHolder ID="listaModulos" runat="server" /> 
-                            </ul>       
+                            <a href="#"><i class="fa fa-cubes fa-fw"></i>Caja de herramientas</a>
+                            
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-line-chart fa-fw"></i> Mi progreso</a>
+                            <a href="#"><i class="fa fa-line-chart fa-fw"></i>Mi progreso</a>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Foros de discusión</a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i>Foros de discusión</a>
                         </li>
                         <li>
-                            <a href="game.aspx"><i class="fa fa-gamepad fa-fw"></i> Mini juego</a>
+                            <a href="includes/game/index.html"><i class="fa fa-gamepad fa-fw"></i> Mini juego</a>
                         </li>
                     </ul>
                 </div>
@@ -104,33 +101,25 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Lista de actividades <asp:PlaceHolder ID="tituloModulo" runat="server" /></h1>
+                    <h1 class="page-header">Mini juego montes de maria</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
+                <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <asp:PlaceHolder ID="descripModulo" runat="server" /> 
-                            </h4>                           
+                            Mini juego un viaje por la memoria histórica
                         </div>
-                        <!-- .panel-heading -->
                         <div class="panel-body">
-                            <div class="panel-group" id="accordion">
-                                <!--Aca se ubican las actividades de los modulos-->
-                                <asp:PlaceHolder ID="actividadesModulo" runat="server" />
-                            </div>
+                            <iframe id="game" src="includes/game/index.html" height="530" width="100%"></iframe> 
                         </div>
-                        <!-- .panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
         </div>
     </div>
         <nav class="navbar navbar-default navbar-form navbar-collapse">

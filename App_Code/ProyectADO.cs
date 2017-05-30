@@ -169,6 +169,38 @@ public class ProyectADO
 
     }
 
+    public DataTable Progreso(int Op , int Id_Progreso, String Descripcion, int Id_Actividad, int Id_Persona, int porcentaje)
+    {
+        SqlParameter _Op = new SqlParameter("@Op", SqlDbType.Int);
+        _Op.Value = Op;
+
+        SqlParameter _Id_Progreso = new SqlParameter("@Id_Progreso", SqlDbType.Int);
+        _Id_Progreso.Value = Id_Progreso;
+
+        SqlParameter _Descripcion = new SqlParameter("@Descripcion", SqlDbType.VarChar);
+        _Descripcion.Value = Descripcion;
+
+        SqlParameter _Id_Actividad = new SqlParameter("@Id_Actividad", SqlDbType.Int);
+        _Id_Actividad.Value = Id_Actividad;
+
+        SqlParameter _Id_Persona = new SqlParameter("@Id_Persona", SqlDbType.Int);
+        _Id_Persona.Value = Id_Persona;
+
+        SqlParameter _porcentaje = new SqlParameter("@porcentaje", SqlDbType.Int);
+        _porcentaje.Value = porcentaje;
+
+        SqlParameter[] Parametros = { _Op, _Id_Progreso, _Descripcion, _Id_Actividad, _Id_Persona, _porcentaje };
+
+        DataTable respuesta = null;
+
+        using (SqlConnection conn = new SqlConnection(SqlConecction))
+        {
+            respuesta = new BDConnection(SqlConecction).runStoredPrcDt(Parametros, conn, "JR_Progreso", 300000);
+        }
+        return respuesta;
+
+    }
+
     #endregion
 
 

@@ -24,8 +24,9 @@ public partial class index_logged_in : System.Web.UI.Page
         if (!this.IsPostBack)
         {
             cargarModulosInsginias();
-
             listarModulos();
+            listaProgreso();
+
         }
     }
 
@@ -199,6 +200,69 @@ public partial class index_logged_in : System.Web.UI.Page
         {
             throw;
         }
+    }
+
+    protected void listaProgreso()
+    {
+        var persona = Convert.ToInt32(Globals.s_Id);      
+        try
+        {
+            DataTable dtModulos = new DataTable();  //Tabla para los modulos
+            DataTable dtProgreso = new DataTable();  //Tabla para los modulos
+            ProyectADO ProyectADO = new ProyectADO();  //Clase controlador
+
+            dtProgreso = ProyectADO.Progreso(1, 0, "", 0, 1, 0); 
+             
+            StringBuilder html = new StringBuilder();
+
+            if (dtProgreso.Rows.Count > 0)
+            {
+                foreach (DataRow row in dtProgreso.Rows)
+                {
+                    var idModulo = Convert.ToInt32(row["Id_Modulo"]);
+                    dtModulos = ProyectADO.Modulos(idModulo, 4, "", "", 1);
+
+                    DataRow row2 = dtModulos.Rows[0];
+
+                    html.Append("<li>");
+                    html.Append("<a href='#'>");
+                    html.Append("<div>");
+                    html.Append("<p>");
+                    html.Append("<strong>"+row2["Nombre"]+"</strong>");
+                    html.Append("<span class='pull-right text-muted'>"+row["porcentaje"]+"% Completado</span>");
+                    html.Append("</p>");
+                    html.Append("<div class='progress progress-striped active'>");
+                    html.Append("<div class='progress-bar progress-bar-info' role='progressbar' aria-valuenow='" + row["porcentaje"] + "' aria-valuemin='0' aria-valuemax='100' style='width: " + row["porcentaje"] + "%'>");
+                    html.Append("<span class='sr-only'>" + row["porcentaje"] + "% Completado (success)</span>");
+                    html.Append("</div>");
+                    html.Append("</div>");
+                    html.Append("</div>");
+                    html.Append("</a>");
+                    html.Append("</li>");
+                    html.Append("<li class='divider'></li>");
+                }
+            }
+            else
+            {
+                html.Append("<li>");
+                html.Append("<a href='#'>");
+                html.Append("<div>");
+                html.Append("<p>");
+                html.Append("<strong>No has realizado ningún progreso</strong>");
+                html.Append("</p>");
+                html.Append("</div>");
+                html.Append("</a>");
+                html.Append("</li>");
+            }
+
+
+            listaProgresoModulo.Controls.Add(new Literal { Text = html.ToString() });
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+
     }
 
     #endregion

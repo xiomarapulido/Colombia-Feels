@@ -51,9 +51,23 @@
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <asp:PlaceHolder ID="nombreUser" runat="server" /> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-tasks fa-fw"></i> Mi progreso <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <asp:PlaceHolder ID="listaProgresoModulo" runat="server" />
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <asp:PlaceHolder ID="nombreUser" runat="server" />
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
@@ -63,13 +77,14 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-sign-out fa-fw"></i>Cerrar sesión
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
+             <!-- /.dropdown -->
 
 
             <!-- Configuracion de los permisos y vistas -->

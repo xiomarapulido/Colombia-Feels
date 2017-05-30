@@ -347,43 +347,6 @@ table.dataTable thead .sorting:after {
     color: #df8a13;
 }
 
-/*Contenedor del Gif que esta a la espera de finalizar*/
-.cargando {
-    display:    none;
-    position:   fixed;
-    z-index:    1050;
-    top:        0;
-    left:       0;
-    height:     100%;
-    width:      100%;
-    background: rgba( 201, 201, 201, .8 )             
-                50% 50% 
-                no-repeat;
-    text-align: center;
-}
-
-.cargando i{
-    text-align: center;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-/* Cuando el cuerpo tiene la clase de carga, que gire
-    la barra de desplazamiento con overflow: hidden */
-body.loading {
-    overflow: hidden;   
-}
-
-/* Cada vez que el cuerpo tiene la clase de carga, nuestra
-    elemento modal será visible */
-body.loading .cargando {
-    display: block;
-}
-
-
 /*Slider para las insignias no modificar la clase directamente si no el objeto sliderInsignias con las clases carousel*/
 #sliderInsignias {
     width: 100%;

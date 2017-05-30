@@ -77,18 +77,24 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-trophy fa-fw"></i>Mis insignias</a>
+                            <a href="#"><i class="fa fa-trophy fa-fw"></i> Mis insignias</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cubes fa-fw"></i>Caja de herramientas</a>
-                            
+                            <a href="#"><i class="fa fa-cubes fa-fw"></i> Caja de herramientas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <!--Listar modulos-->
+                                <asp:PlaceHolder ID="listaModulos" runat="server" /> 
+                            </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-line-chart fa-fw"></i>Mi progreso</a>
+                            <a href="#"><i class="fa fa-line-chart fa-fw"></i> Mi progreso</a>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i>Foros de discusión</a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Foros de discusión</a>
+                        </li>
+                        <li>
+                            <a href="game.aspx"><i class="fa fa-gamepad fa-fw"></i> Mini juego</a>
                         </li>
                     </ul>
                 </div>

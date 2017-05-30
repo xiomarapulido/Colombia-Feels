@@ -24,6 +24,8 @@ public partial class index_logged_in : System.Web.UI.Page
         if (!this.IsPostBack)
         {
             cargarModulosInsginias();
+
+            listarModulos();
         }
     }
 
@@ -166,6 +168,37 @@ public partial class index_logged_in : System.Web.UI.Page
             throw;
         }
 
+    }
+
+    protected void listarModulos()
+    {
+        try
+        {
+            DataTable dtModulos = new DataTable();  //Tabla para los modulos
+            ProyectADO ProyectADO = new ProyectADO();  //Clase controlador
+
+            dtModulos = ProyectADO.Modulos(0, 1, "", "", 1);  //Lista de modulos
+
+
+            if (dtModulos.Rows.Count > 0)
+            {
+                StringBuilder html = new StringBuilder();
+
+                foreach (DataRow row in dtModulos.Rows)
+                {
+                    html.Append("<li>");
+                    html.Append("<a href='lista_actividades.aspx?key=" + row["Id_Modulo"] + "'> " + row["Nombre"] + "</a>");
+                    html.Append("</li>");
+                }
+
+                listaModulos.Controls.Add(new Literal { Text = html.ToString() });
+
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     #endregion

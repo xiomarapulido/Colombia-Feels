@@ -211,7 +211,7 @@ public partial class index_logged_in : System.Web.UI.Page
             DataTable dtProgreso = new DataTable();  //Tabla para los modulos
             ProyectADO ProyectADO = new ProyectADO();  //Clase controlador
 
-            dtProgreso = ProyectADO.Progreso(1, 0, "", 0, 1, 0); 
+            dtProgreso = ProyectADO.Progreso(1, 0, "", 0, persona, 0); 
              
             StringBuilder html = new StringBuilder();
 

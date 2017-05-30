@@ -7,15 +7,17 @@
         <script src="../../Scripts/js/game/Level1.js"></script>
         <script src="../../Scripts/js/game/MainMenu.js"></script>
         <script src="../../Scripts/js/game/phaser.js"></script>
+        <script src="../../Scripts/js/game/Intro.js"></script>
 
         <script type="text/javascript">
             window.onload=function(){
 
 
              // declaracion de las variables del juego
-            var juego = new Phaser.Game(768, 500, Phaser.CANVAS, '',);
+            var juego = new Phaser.Game(840, 500, Phaser.CANVAS, '',);
             juego.state.add('MainMenu',Game.MainMenu);
-            juego.state.add('Level1',Game.Level1);    
+            juego.state.add('Level1',Game.Level1);
+            juego.state.add('Intro',Game.Intro);        
             juego.state.start('MainMenu');
 
             };

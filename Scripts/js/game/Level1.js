@@ -4,6 +4,25 @@ Game.Level1 = function (juego) {
 
 };
 
+            var content2 = [
+        " ",   
+        "Tu misión: reintegrar la mayor",
+        "cantidad posible de paramilitares",
+        "que se encuentran en los montes",
+        "de maría..., para hacerlo deberás",
+        "saltar encima de ellos ..", 
+        "deberas esperar a que termine",
+        "la aparicion de imagenes...",
+        "que se vera , al reintegrar",
+        "a un paramilitar...",
+        "y no podras saltar en mas",
+        "de uno de ellos..",
+        "de no hacer lo anterior",
+        "empezaras de nuevo..",
+        "éxitos!! … ",
+        " ",
+        ];
+
 
  			 // 1. Jugador
             var jugador; // Personaje principal
@@ -22,34 +41,105 @@ Game.Level1 = function (juego) {
             // 6. Potenciales enemigos
             var enemigos; // Potenciales enemigos
             var arrenemigos = []; // Arreglo de enemigos
+            
+            var text;
+            var index2 = 0;
+            var line2 = '';
 
-            var enemigo;
-            var total=0;
+            var musicaFondo;
+
+            var imagenFondo;
+
+            var fin;
+
+            var emitter;
+        
+
+
+
 
 
 Game.Level1.prototype={
+
+    updateline2 :function () {
+
+  if (line2.length < content2[index2].length)
+    {
+        line2 = content2[index2].substr(0, line2.length + 1);
+         text.text = line2;
+         //text.setText(line2);
+    }
+    else
+    {
+      //siguiente line2a ---> espera de dos segundos
+      this.time.events.add(Phaser.Timer.SECOND * 1, this.nextline2, this);
+      
+    }
+
+
+
+},
+
+nextline2:function() {
+
+    index2++;
+
+
+   if (index2 < content2.length)
+    {
+        line2 = '';
+        this.time.events.repeat(80, content2[index2].length + 1, this.updateline2, this);
+       
+    }
+
+ },
 
   preload:function(){
    this.load.image('fondo', '../../img/game/paisaje.gif');
    this.load.spritesheet('enemigo', '../../img/game/soldado.png',39,56);
    this.load.image('suelo', '../../img/game/tierra.png');
    this.load.image('arbol', '../../img/game/arbol.png');
+   this.load.image('fin', '../../img/game/fin.png');
    this.load.spritesheet('personaje', '../../img/game/personaje.png', 42, 63);
+
+   ///audios
+   this.load.audio('magic', ['https://raw.githubusercontent.com/xiomarapulido/Colombia-Feels/gamemodulomontesmaria/audio/game/magic.mp3']);
+   this.load.audio('musicaFondo', ['https://raw.githubusercontent.com/xiomarapulido/Colombia-Feels/gamemodulomontesmaria/audio/game/Composure.ogg']);
+
+   //
+    this.load.image('img1', '../../img/game/1.jpg');
+    this.load.image('img2', '../../img/game/2.jpg');
+    this.load.image('img3', '../../img/game/3.jpg');
+    this.load.image('img4', '../../img/game/4.jpg');
+    this.load.image('img5', '../../img/game/5.jpg');
+    this.load.image('img6', '../../img/game/6.jpg');
+    this.load.image('img7', '../../img/game/7.jpg');
+    this.load.image('img8', '../../img/game/8.jpg');
+    this.load.image('img9', '../../img/game/9.jpg');
 
   },
 
   create:function(){
 
-   //this.stage.backgroundColor='#7BF728';
+                audio1.stop();
+                
+                this.add.audio('magic');
 
+                musicaFondo=this.add.audio('musicaFondo');
+
+                musicaFondo.loopFull(0.6);
+
+        
     			     //  Física arcade
                 this.physics.startSystem(Phaser.Physics.ARCADE);
 
                 //imagen de fondo
-                this.add.sprite(0, 0, 'fondo');
+                imagenFondo=this.add.sprite(0, 0, 'fondo');
+                //imagenFondo.anchor.setTo(0.5, 0.5);
+                imagenFondo.scale.setTo(1, 1);
 
-                // Establecemos los límites del this completo
-                this.world.setBounds(0, 0, 2000, 384);
+                // Establecemos los límites del juego completo
+                this.world.setBounds(0, 0, 1500, 1000);
 
                 //  Grupo de plataformas
                 plataformas = this.add.group();
@@ -58,22 +148,53 @@ Game.Level1.prototype={
                 plataformas.enableBody = true;
 
                 // Suelo
-                var piso = plataformas.create(50, this.world.height - 100, 'suelo');
+                var piso1 = plataformas.create(1, 300, 'suelo');
 
 
-                piso.scale.setTo(1,1);
+                piso1.scale.setTo(1,1);
 
                 //  Objeto inmóvil, no se desplaza al caer un objeto sobre él
-                piso.body.immovable = true;
+                piso1.body.immovable = true;
+
 
                 // Otro piso
-                var piso = plataformas.create(850, this.world.height - 200, 'suelo');
+                var piso2 = plataformas.create(700, 500, 'suelo');
 
-
-                piso.scale.setTo(1, 1);
+                //  También lo podemos econtadorEscalerasr
+                piso2.scale.setTo(4, 1);
 
                 //  Objeto móvil, sí se desplaza al caer un objeto sobre él
-                piso.body.immovable = true;
+                piso2.body.immovable = true;
+
+
+
+                var piso3 = plataformas.create(50, 620, 'suelo');
+
+                //  También lo podemos econtadorEscalerasr
+                piso3.scale.setTo(1, 1);
+
+                //  Objeto móvil, sí se desplaza al caer un objeto sobre él
+                piso3.body.immovable = true;
+
+
+
+                var piso4 = plataformas.create(1, 900, 'suelo');
+
+                //  También lo podemos econtadorEscalerasr
+                piso4.scale.setTo(6, 1);
+
+                //  Objeto móvil, sí se desplaza al caer un objeto sobre él
+                piso4.body.immovable = true;
+
+
+                
+                //fin partida
+                fin = this.add.sprite(1120, 600, 'fin');
+
+
+                fin.scale.setTo(1,1);
+
+               
 
                 // arboles
                 arboles = this.add.group();
@@ -81,19 +202,23 @@ Game.Level1.prototype={
                 arboles.enableBody = true;
 
 
-              var arbol = arboles.create(100,140, 'arbol');
+               var arbol = arboles.create(100,160, 'arbol');
 
 
               //  parámetros del jugador,  posición inicial
-                jugador = this.add.sprite(32, this.world.height - 350, 'personaje');
+                jugador = this.add.sprite(50, 30, 'personaje');
 
                 // permitir física al jugador
                 this.physics.arcade.enable(jugador);
 
+                this.physics.arcade.enable(fin);
+
+                //this.physics.arcade.enable(emitter);
+
                 // aceleración de gravedad
                 jugador.body.gravity.y = 500;
-                // permitir que el jugador colisione con los límites del this
-                jugador.body.collideWorldBounds = false;
+                // permitir que el jugador colisione con los límites del juego
+                jugador.body.collideWorldBounds = true;
 
                 // se crea la película de animaciones para el personaje
                 jugador.animations.add('left', [4, 5,6,7], 10, true);
@@ -105,36 +230,9 @@ Game.Level1.prototype={
                 enemigos = this.add.group();
                 enemigos.enableBody = true;
 
-                 //  Creacion de  enemigos
-                for (var i = 0; i < 4; i++)
-                {
-                    //  se crea enemigo dentro del grupo enemigos
+                this.time.events.add(3000, this.creacionEnemigos, this); 
 
-                   //var enemigo = enemigos.create(300+i * 70, 0, 'enemigo');
-                    var enemigo=this.add.sprite(300 + Math.random() * 320,0,'enemigo');
-                    enemigos.add(enemigo);
-
-                    //pelicula de animaciones para los enemigos
-                    enemigo.animations.add('caminar', [8,9,10, 11], 10, true);
-                    enemigo.animations.play('caminar');
-
-                    //  gravedad del enemigo
-                    enemigo.body.gravity.y = 300;
-                    // movimiento de los enemigos
-                    enemigo.body.velocity.x = 50;
-
-                    // se crea objeto JSON
-                    var estrella = {
-                        "enemigo": enemigo,
-                        "gravity_y": 300
-                    };
-                    //agregar objetos a arreglo
-                    arrenemigos.push(estrella);
-
-                }
-
-
-
+        
                 // Creacion de teclado
                 cursores = this.input.keyboard.createCursorKeys();
                 // Creamos un callback o una función que se dispara al soltar la tecla "UP"
@@ -150,7 +248,7 @@ Game.Level1.prototype={
                 sprite.fixedToCamera = true;
 
                 // creacion de texto  como hijo del objeto sprite con addChild
-                puntajeTexto = this.add.text(16, 16, 'puntaje: 0', {fontSize: '32px', fill: 'white'});
+                puntajeTexto = this.add.text(16, 16, 'reintegrados: 0', {fontSize: '20px', fill: 'white'});
                 sprite.addChild(puntajeTexto);
 
                 // ubicacion del sprite contenedor de la cámara en las coordenadas 10, 10
@@ -162,25 +260,28 @@ Game.Level1.prototype={
 
 
 
+                text = this.add.text(32, 400, '', { font: "30pt Courier", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness: 2 });
 
+                this.nextline2();
+
+                
+               
+                
+            
   },
 
   update:function(){
-
-
-
-  	  // reinicio de variables
+                
+          	  // reinicio de variables
                 colisionarbol = false;
                 contadorarboles = 0;
 
                 //  reiniciar velocidad del jugador para evitar que se acelere.
                 jugador.body.velocity.x = 0;
-
                 //  colisionar  jugador con las plataformas
                 this.physics.arcade.collide(jugador, plataformas);
                 // Lo mismo hacemos con las enemigos
                 this.physics.arcade.collide(enemigos, plataformas);
-
                 //  evaluacion de colisión con las arboles
                 this.physics.arcade.overlap(jugador, arboles,this.collectarboles, null, this);
                 // console.log('colisionarbol = ' + colisionarbol);
@@ -194,7 +295,6 @@ Game.Level1.prototype={
 
                 if (cursores.left.isDown)// Si se presiona LEFT
                 {
-
                     //  mover jugador a la izquierda
                     jugador.body.velocity.x = -150;
 
@@ -215,6 +315,7 @@ Game.Level1.prototype={
                     jugador.animations.stop();
                     jugador.frame = 0;
                 }
+              
 
                 // Si se presiona el botón UP y se esta colisionando con alguna plataforma o si el contador de saltos es igual a 1 , y no hay colisión con los arboles
                 if (cursores.up.isDown && (jugador.body.touching.down || contadorSaltos == 1) && !colisionarbol)
@@ -238,21 +339,63 @@ Game.Level1.prototype={
                 if (contadorarboles != 0) {
                     jugador.animations.play('climb');
                 }
+
+              
                 this.physics.arcade.overlap(jugador, enemigos,this.collectenemigo, null, this);
 
-
+                this.physics.arcade.overlap(jugador, fin,this.finpartida, null, this);
 
 
   },
+         
+            // Funciones complementarias
 
-   // Funciones complementarias
+                iniEmitter :function () { 
+                    emitter = this.add.emitter(this.world.centerX, 200, 5);
+
+                    emitter.makeParticles(['img1', 'img2', 'img3','img4','img5','img6','img7','img8','img9']);
+                   
+                 
+                    emitter.start(false, 5000, 20);
+
+                    this.time.events.add(5000, this.destroyEmitter, this); 
+
+
+                 }, 
+
+                destroyEmitter :function () { 
+                                     
+                     try {
+                         emitter.destroy();
+                    }
+                    catch(err) {
+                     musicaFondo.stop();  
+                     this.state.start('Level1');
+                    //alert(err);
+                    }
+                  
+
+                 }, 
+              finpartida :function(jugador,fin){
+                if(jugador.collide==fin.collide){
+                  //alert('fin partida');
+                    musicaFondo.stop();
+                    this.state.start('Level1');
+          
+                }
+
+              },
 
              collectenemigo :function(jugador, enemigo) {
-
+                
                 // Si los pies del jugador tocan la parte superior de la enemigo
                 if ((jugador.position.y + jugador.height) <= enemigo.position.y) {
-                    // se elimina el enemigo de la pantalla
-                   // enemigo.kill();
+                //emitter = this.add.emitter(this.world.centerX, 200, 5);
+               // emitter.makeParticles(['img1', 'img2', 'img3','img4','img5','img6','img7','img8','img9']);
+                    this.time.events.add(5000, this.iniEmitter, this); 
+
+                    //reproduccion de efecto de sonido
+                    this.sound.play('magic');
                     ///desaparecer enemigo pasados 3 segundos
                     enemigo.lifespan = 3000;
                     //mostrar frame 0 del enemigo ---> reintegrado
@@ -262,15 +405,45 @@ Game.Level1.prototype={
                     //quitar movimiento
                     enemigo.body.velocity.x=0;
 
-                    arrenemigos[0].enemigo.body.bounce.y = 0;
-
+                   // arrenemigos[0].enemigo.body.bounce.y = 0;
                     //  actualizacion e incrementacion de el puntaje
                     puntaje += 1;
-                    puntajeTexto.text = 'puntaje: ' + puntaje;
+                    puntajeTexto.text = 'reintegrados: ' + puntaje;
                     jugador.body.velocity.y = -250;
                     contadorSaltos = 0;
                 }
-    
+
+            },
+            creacionEnemigos :function(){
+
+                 this.time.events.add(5000, this.creacionEnemigos, this); 
+            
+                //  Creacion de  enemigos
+                for (var i = 0; i < 5; i++)
+                {
+                    //  se crea enemigo dentro del grupo enemigos
+                   //var enemigo = enemigos.create(300+i * 70, 0, 'enemigo');
+                    var enemigo=this.add.sprite(500 + Math.random() * 800,0,'enemigo');
+                    enemigos.add(enemigo);
+
+                    //pelicula de animaciones para los enemigos
+                    enemigo.animations.add('caminar', [8,9,10, 11], 10, true);
+                    enemigo.animations.play('caminar');
+
+                    //  gravedad del enemigo
+                    enemigo.body.gravity.y = 300;
+                    // movimiento de los enemigos
+                    enemigo.body.velocity.x = 70;
+
+                    // se crea objeto JSON
+                    var estrella = {
+                        "enemigo": enemigo,
+                        "gravity_y": 300
+                    };
+                    //agregar objetos a arreglo
+                    arrenemigos.push(estrella);
+
+                }
             },
 
              collectarboles :function(jugador, arbol) {

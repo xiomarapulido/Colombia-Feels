@@ -67,8 +67,22 @@ Game.Intro.prototype={
   	  text = this.add.text(32, 380, '', { font: "30pt Courier", fill: "#000000", stroke: "#ffffff", strokeThickness: 2 });
 
    	  this.nextLine();
+
+      this.input.onDown.add(this.gofull, this);
  
   },
+  gofull :function () {
+
+    if (this.scale.isFullScreen)
+    {
+       // this.scale.stopFullScreen();
+    }
+    else
+    {
+        this.scale.startFullScreen(false);
+    }
+
+},
   fadePictures :function () {
 
     var tween;

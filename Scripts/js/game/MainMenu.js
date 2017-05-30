@@ -6,6 +6,7 @@ Game.MainMenu = function (juego) {
 var fondoMenu;
 var tituloMenu;
 var audio1;
+var cursores;
 
 Game.MainMenu.prototype={
 
@@ -33,12 +34,31 @@ Game.MainMenu.prototype={
       
        //alert('empezar juego');
       this.state.start('Intro');
+
     
   	 });
 
    tituloMenu=this.add.sprite(this.world.centerX,this.world.centerY-50,'texto');
    tituloMenu.anchor.setTo(0.5,0.5);
+
+   this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+   cursores = this.input.keyboard.createCursorKeys();
+   
+   this.input.onDown.add(this.gofull, this);
   },
+
+gofull :function () {
+
+    if (this.scale.isFullScreen)
+    {
+       // this.scale.stopFullScreen();
+    }
+    else
+    {
+        this.scale.startFullScreen(false);
+    }
+
+},
 
   update:function(){
 

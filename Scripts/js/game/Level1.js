@@ -264,11 +264,26 @@ nextline2:function() {
 
                 this.nextline2();
 
+                this.input.onDown.add(this.gofull, this);
+
                 
                
                 
             
   },
+
+  gofull :function () {
+
+    if (this.scale.isFullScreen)
+    {
+       // this.scale.stopFullScreen();
+    }
+    else
+    {
+        this.scale.startFullScreen(false);
+    }
+
+},
 
   update:function(){
                 

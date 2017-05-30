@@ -28,9 +28,8 @@
                 <div class="login-wrap">
 
                     <div class="form">
-
-                        <input id="TxtUsuario" type="text" placeholder="Correo" name="un" runat="server" />
-                        <input type="password" name="pw" id="TxtContrasena" placeholder="Contraseña" runat="server" />
+                        <input id="TxtUsuario" type="text" placeholder="Correo" name="TxtUsuario" runat="server" />
+                        <input type="password" name="TxtContrasena" id="TxtContrasena" placeholder="Contrase&ntilde;a" runat="server" />
                         <asp:Button Text="Iniciar Sesion" ID="BtnIniciar" runat="server" class="login-button" OnClick="BtnIniciar_Click"
                             />
                     </div>
@@ -44,7 +43,9 @@
             </div>
             <div class="col-md-12">
                 <footer>
-                    <h6 style="margin-top:30px; text-align: center; color: #00698c">Copyright 2017 | Xiomara Andrea Pulido| Abel Felipe Chaux Gutierrez | John Alvaro RamÃ­rez Murcia
+                    <h6 style="margin-top:30px; text-align: center; color: #00698c">
+                        Copyright 2017 | Colombia Feels <a href="http://www.centrodememoriahistorica.gov.co/" class="navbar-link" target="_blank">| Centro Nacional de Memoria Hist&oacute;rica </a>
+                        <a href="http://www.poli.edu.co/" class="navbar-link" target="_blank">| Polit&eacute;cnico Grancolombiano |</a> 
                     </h6>
                 </footer>
             </div>

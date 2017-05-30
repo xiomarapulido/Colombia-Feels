@@ -1,4 +1,4 @@
-var Game ={};
+﻿var Game ={};
 
 Game.Level1 = function (juego) {
 
@@ -480,6 +480,5 @@ nextline2:function() {
                     }
                 }
             }
-
 
 };
